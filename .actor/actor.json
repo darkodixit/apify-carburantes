@@ -1,0 +1,17 @@
+{
+  "actorSpecification": 1,
+  "name": "spain-fuel-prices",
+  "title": "Spain Fuel Prices (precios de carburantes)",
+  "description": "Official prices of every petrol station in Spain (~11.500) with daily history, price deltas, cheapest-N ranking by zone, radius search and threshold alerts.",
+  "version": "1.0",
+  "buildTag": "latest",
+  "meta": {
+    "templateId": "python-start"
+  },
+  "dockerfile": "../Dockerfile",
+  "readme": "../README.md",
+  "input": "./input_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

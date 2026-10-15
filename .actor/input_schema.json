@@ -1,0 +1,158 @@
+{
+  "title": "Spain Fuel Prices - input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "fuel": {
+      "title": "Fuel / Carburante",
+      "type": "string",
+      "description": "Product to report. Accepts friendly aliases (diesel, sp95, glp...) or the official name.",
+      "editor": "select",
+      "default": "gasolina_95_e5",
+      "enum": [
+        "gasolina_95_e5",
+        "gasolina_95_e5_premium",
+        "gasolina_95_e10",
+        "gasolina_98_e5",
+        "gasolina_98_e10",
+        "gasoleo_a",
+        "gasoleo_premium",
+        "gasoleo_b",
+        "gases_licuados_del_petroleo",
+        "gas_natural_comprimido",
+        "gas_natural_licuado",
+        "biodiesel",
+        "bioetanol",
+        "hidrogeno",
+        "adblue"
+      ],
+      "enumTitles": [
+        "Gasolina 95 E5 (SP95)",
+        "Gasolina 95 E5 Premium",
+        "Gasolina 95 E10",
+        "Gasolina 98 E5 (SP98)",
+        "Gasolina 98 E10",
+        "Gasoleo A (diesel)",
+        "Gasoleo Premium",
+        "Gasoleo B (agricola)",
+        "GLP / Autogas",
+        "GNC",
+        "GNL",
+        "Biodiesel",
+        "Bioetanol",
+        "Hidrogeno",
+        "AdBlue"
+      ]
+    },
+    "provinces": {
+      "title": "Provinces / Provincias",
+      "type": "array",
+      "description": "Filter by province name, accent-insensitive partial match. Empty = all Spain.",
+      "editor": "stringList",
+      "prefill": ["MADRID"]
+    },
+    "municipalities": {
+      "title": "Municipalities / Municipios",
+      "type": "array",
+      "description": "Filter by municipality or town name (partial match).",
+      "editor": "stringList"
+    },
+    "postalCodes": {
+      "title": "Postal codes / Codigos postales",
+      "type": "array",
+      "description": "Exact 5-digit postal codes.",
+      "editor": "stringList"
+    },
+    "brands": {
+      "title": "Brands / Rotulos",
+      "type": "array",
+      "description": "Filter by brand, e.g. REPSOL, CEPSA, BALLENOIL, CARREFOUR.",
+      "editor": "stringList"
+    },
+    "latitude": {
+      "title": "Latitude / Latitud",
+      "type": "number",
+      "description": "Centre point for the radius search (WGS84).",
+      "editor": "number"
+    },
+    "longitude": {
+      "title": "Longitude / Longitud",
+      "type": "number",
+      "description": "Centre point for the radius search (WGS84).",
+      "editor": "number"
+    },
+    "radiusKm": {
+      "title": "Radius in km / Radio en km",
+      "type": "number",
+      "description": "Only stations within this distance of latitude/longitude.",
+      "editor": "number",
+      "minimum": 0.1
+    },
+    "maxPrice": {
+      "title": "Price alert threshold / Umbral de alerta",
+      "type": "number",
+      "description": "Stations at or below this EUR/litre are flagged belowThreshold and trigger the alert webhook.",
+      "editor": "number"
+    },
+    "topN": {
+      "title": "Cheapest N per zone / N mas baratas por zona",
+      "type": "integer",
+      "description": "0 = every match. Otherwise keep only the N cheapest per the zone chosen in rankBy.",
+      "editor": "number",
+      "default": 0,
+      "minimum": 0
+    },
+    "rankBy": {
+      "title": "Ranking scope / Ambito del ranking",
+      "type": "string",
+      "description": "Where the cheapest-N ranking is computed: inside each province, inside each municipality, nationwide, or no ranking at all.",
+      "editor": "select",
+      "default": "province",
+      "enum": ["province", "municipality", "overall", "none"],
+      "enumTitles": [
+        "Rank inside each province",
+        "Rank inside each municipality",
+        "Single national ranking",
+        "No ranking"
+      ]
+    },
+    "openNow": {
+      "title": "Only open right now / Solo abiertas ahora",
+      "type": "boolean",
+      "description": "Parses the official opening-hours string. Stations with an unreadable schedule are kept.",
+      "default": false
+    },
+    "publicOnly": {
+      "title": "Public stations only / Solo venta al publico",
+      "type": "boolean",
+      "description": "Drops restricted-sale stations (co-ops, fleets).",
+      "default": true
+    },
+    "includeAllFuels": {
+      "title": "Include every fuel price / Incluir todos los precios",
+      "type": "boolean",
+      "description": "Adds the full prices{} object per station, not only the selected fuel.",
+      "default": true
+    },
+    "storeHistory": {
+      "title": "Build daily history / Guardar historico diario",
+      "type": "boolean",
+      "description": "Appends one row per station/day to the named dataset and computes priceChange vs the previous run.",
+      "default": true
+    },
+    "alertWebhookUrl": {
+      "title": "Alert webhook URL",
+      "type": "string",
+      "description": "Optional. Receives a POST with the stations below maxPrice.",
+      "editor": "textfield"
+    },
+    "maxItems": {
+      "title": "Max items",
+      "type": "integer",
+      "description": "Hard cap on dataset rows. 0 = no cap.",
+      "editor": "number",
+      "default": 0,
+      "minimum": 0
+    }
+  }
+}

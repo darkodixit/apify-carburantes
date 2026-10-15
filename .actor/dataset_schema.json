@@ -1,0 +1,44 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "overview": {
+      "title": "Cheapest first",
+      "transformation": {
+        "fields": [
+          "rank",
+          "price",
+          "priceChange",
+          "priceTrend",
+          "brand",
+          "municipality",
+          "province",
+          "address",
+          "schedule",
+          "openNow",
+          "distanceKm",
+          "mapUrl",
+          "priceDate"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "rank": { "label": "#", "format": "number" },
+          "price": { "label": "EUR/l", "format": "number" },
+          "priceChange": { "label": "Delta", "format": "number" },
+          "priceTrend": { "label": "Trend", "format": "text" },
+          "brand": { "label": "Brand", "format": "text" },
+          "municipality": { "label": "Municipality", "format": "text" },
+          "province": { "label": "Province", "format": "text" },
+          "address": { "label": "Address", "format": "text" },
+          "schedule": { "label": "Hours", "format": "text" },
+          "openNow": { "label": "Open now", "format": "boolean" },
+          "distanceKm": { "label": "km", "format": "number" },
+          "mapUrl": { "label": "Map", "format": "link" },
+          "priceDate": { "label": "Source date", "format": "text" }
+        }
+      }
+    }
+  }
+}

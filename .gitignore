@@ -1,0 +1,7 @@
+.venv/
+storage/
+__pycache__/
+*.pyc
+.pytest_cache/
+sample_raw.json
+apify_storage/

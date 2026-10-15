@@ -1,0 +1,26 @@
+{
+  "_comment": "Espejo en fichero del pricing pay-per-event. Apify lo configura en Console > Actor > Monetization; estos son los valores exactos a pegar ahi (nombres de evento identicos a los que cobra src/main.py).",
+  "currency": "USD",
+  "events": {
+    "actor-start": {
+      "eventTitle": "Actor start",
+      "eventDescription": "One charge per run. Covers the 12 MB download from the ministry API and the parsing of all ~11.500 stations.",
+      "eventPriceUsd": 0.02
+    },
+    "station-result": {
+      "eventTitle": "Station result",
+      "eventDescription": "One charge per station returned in the dataset, cleaned, ranked and with its price delta.",
+      "eventPriceUsd": 0.0004
+    },
+    "history-snapshot": {
+      "eventTitle": "Daily history snapshot",
+      "eventDescription": "One charge per run that appends the day's prices to the cumulative history dataset.",
+      "eventPriceUsd": 0.01
+    },
+    "price-alert": {
+      "eventTitle": "Price alert",
+      "eventDescription": "One charge per station found at or below the requested price threshold.",
+      "eventPriceUsd": 0.001
+    }
+  }
+}
