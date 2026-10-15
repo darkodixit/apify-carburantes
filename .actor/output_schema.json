@@ -1,0 +1,19 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Spain fuel prices output",
+  "description": "Petrol stations matching the input filters, cheapest first, with price deltas, opening hours and alerts.",
+  "properties": {
+    "stations": {
+      "type": "string",
+      "title": "Stations",
+      "description": "Every station returned by this run as dataset items: rank, price in EUR/l, price delta against the previous snapshot, brand, address, municipality, province, opening hours, open-now flag, distance in km and map link.",
+      "template": "{{links.apiDefaultDatasetUrl}}/items?clean=true"
+    },
+    "summary": {
+      "type": "string",
+      "title": "Run summary",
+      "description": "One JSON record with the counts of the run: stations scanned, stations returned, alerts fired, cheapest price found and the source date published by the ministry.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+    }
+  }
+}
